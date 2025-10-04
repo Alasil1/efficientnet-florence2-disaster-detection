@@ -5,6 +5,8 @@ This repository contains implementations of two approaches for disaster scene cl
 1. **EfficientNetV2-S** - CNN-based classifier with custom head
 2. **Florence-2** - Vision-language model with LoRA fine-tuning
 
+**✨ Pre-trained weights included!** Both models are ready to use without additional training.
+
 ---
 
 ## 📁 Project Structure
@@ -18,6 +20,9 @@ This repository contains implementations of two approaches for disaster scene cl
 │   ├── train.py           # Training script
 │   └── infer.py           # Inference script
 │
+├── Effiecinet_Net_weight/ # Pre-trained EfficientNet weights
+│   └── best_model.pth     # Ready-to-use checkpoint
+│
 ├── florence/              # Florence-2 approach
 │   ├── config.py          # Configuration
 │   ├── dataset.py         # Florence dataset
@@ -25,6 +30,9 @@ This repository contains implementations of two approaches for disaster scene cl
 │   ├── utils.py           # Training/eval utilities
 │   ├── train.py           # Training script
 │   └── infer.py           # Inference script
+│
+├── Florence_inf/          # Pre-trained Florence weights
+│   └── ...                # LoRA adapters and configs
 │
 ├── external_eval/         # External dataset evaluation
 │   ├── eval_efficientnet_on_external.py
@@ -51,7 +59,21 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-### 2. Prepare Dataset
+### 2. Use Pre-trained Models (Recommended)
+
+**EfficientNetV2 Inference:**
+```powershell
+# Uses Effiecinet_Net_weight/best_model.pth by default
+python efficientnet\infer.py --data_root PATH_TO_TEST_DATA
+```
+
+**Florence-2 Inference:**
+```powershell
+# Uses Florence_inf folder by default
+python florence\infer.py --image_path test_image.jpg
+```
+
+### 3. Prepare Dataset (for training or evaluation)
 
 Your dataset should have this structure:
 
@@ -70,16 +92,19 @@ Each class directory contains the images for that class.
 
 ## 🔧 EfficientNetV2 Approach
 
-### Training
+### Quick Start with Pre-trained Weights
+
+**Use the included weights for immediate inference:**
+
+```powershell
+# Uses Effiecinet_Net_weight/best_model.pth by default
+python efficientnet\infer.py --data_root PATH_TO_DATA
+```
+
+### Training from Scratch
 
 ```powershell
 python efficientnet\train.py --data_root PATH_TO_DATA --batch_size 32 --epochs 50
-```
-
-### Inference
-
-```powershell
-python efficientnet\infer.py --data_root PATH_TO_DATA --model_path .\models\best_model.pth
 ```
 
 ### Key Features
@@ -101,16 +126,19 @@ python efficientnet\infer.py --data_root PATH_TO_DATA --model_path .\models\best
 
 ## 🌐 Florence-2 Approach
 
-### Training
+### Quick Start with Pre-trained Weights
+
+**Use the included LoRA adapters for immediate inference:**
+
+```powershell
+# Uses Florence_inf folder by default (no HF token needed)
+python florence\infer.py --image_path PATH_TO_IMAGE
+```
+
+### Training from Scratch
 
 ```powershell
 python florence\train.py --data_root PATH_TO_DATA --hf_token YOUR_HF_TOKEN --batch_size 16 --epochs 10
-```
-
-### Inference
-
-```powershell
-python florence\infer.py --repo_id YOUR_HF_REPO --image_path PATH_TO_IMAGE --hf_token YOUR_HF_TOKEN
 ```
 
 ### Key Features
@@ -167,21 +195,6 @@ python external_eval\eval_efficientnet_on_external.py --model_path PATH_TO_MODEL
 
 ---
 
-## 📈 Results
-
-### On AIDER Dataset
-
-**EfficientNetV2:**
-- Validation Accuracy: ~XX%
-- Test Accuracy: ~XX%
-- F1 (macro): ~XX
-
-**Florence-2:**
-- Validation Accuracy: ~XX%
-- Test Accuracy: ~XX%
-- F1 (weighted): ~0.97
-
----
 
 ## 🔑 Key Notes
 
@@ -212,33 +225,7 @@ python external_eval\eval_efficientnet_on_external.py --model_path PATH_TO_MODEL
 
 ---
 
-## 📝 Citation
 
-If you use this code, please cite:
-
-```
-@misc{disaster-classification-2025,
-  author = {Your Name},
-  title = {Disaster Classification with EfficientNetV2 and Florence-2},
-  year = {2025},
-  publisher = {GitHub},
-  url = {https://github.com/yourusername/yourrepo}
-}
-```
-
----
-
-## 📄 License
-
-MIT License - see LICENSE file for details
-
----
-
-## 🤝 Contributing
-
-Contributions welcome! Please open an issue or PR.
-
----
 
 ## ❓ Troubleshooting
 

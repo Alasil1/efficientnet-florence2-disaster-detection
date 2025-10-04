@@ -78,7 +78,8 @@ def predict_single_image(model, processor, image_path, device):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--base_model', type=str, default="microsoft/Florence-2-base-ft")
-    p.add_argument('--repo_id', type=str, required=True, help='HF repo ID with LoRA weights')
+    p.add_argument('--repo_id', type=str, default='Florence_inf', 
+                    help='Path to LoRA weights folder or HF repo ID (default: Florence_inf)')
     p.add_argument('--subfolder', type=str, default=None)
     p.add_argument('--image_path', type=str, required=True)
     p.add_argument('--hf_token', type=str, default=None)

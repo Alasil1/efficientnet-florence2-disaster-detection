@@ -15,6 +15,12 @@ pip install -r requirements.txt
 
 ## 🔧 EfficientNetV2
 
+### 🎯 Quick Inference (Pre-trained Weights)
+```powershell
+# Uses Effiecinet_Net_weight/best_model.pth by default
+python efficientnet\infer.py --data_root "C:\path\to\test_data"
+```
+
 ### Train
 ```powershell
 python efficientnet\train.py --data_root "C:\path\to\AIDER" --batch_size 32 --epochs 50
@@ -34,14 +40,20 @@ python external_eval\eval_efficientnet_on_external.py --model_path models\best_m
 
 ## 🌐 Florence-2
 
-### Train
+### 🎯 Quick Inference (Pre-trained Weights)
 ```powershell
-python florence\train.py --data_root "C:\path\to\AIDER" --hf_token hf_YOUR_TOKEN --batch_size 16 --epochs 10
+# Uses Florence_inf folder by default
+python florence\infer.py --image_path "test.jpg"
 ```
 
-### Test
+### Train
 ```powershell
-python florence\infer.py --repo_id "username/disaster-florence" --subfolder "florence2-best-f1-0.9690" --image_path "test.jpg" --hf_token hf_YOUR_TOKEN
+python florence\train.py --data_root "C:\path\to\AIDER" --hf_token YOUR_HF_TOKEN --batch_size 16 --epochs 10
+```
+
+### Test (Custom Trained Model)
+```powershell
+python florence\infer.py --repo_id "username/disaster-florence" --subfolder "florence2-best-f1-0.9690" --image_path "test.jpg" --hf_token YOUR_HF_TOKEN
 ```
 
 ### External Eval

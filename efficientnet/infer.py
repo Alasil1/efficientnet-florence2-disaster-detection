@@ -24,7 +24,8 @@ def main():
     import argparse
     p = argparse.ArgumentParser()
     p.add_argument('--data_root', required=True)
-    p.add_argument('--model_path', required=True)
+    p.add_argument('--model_path', default='Effiecinet_Net_weight/best_model.pth', 
+                    help='Path to model checkpoint (default: Effiecinet_Net_weight/best_model.pth)')
     args = p.parse_args()
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

@@ -11,8 +11,11 @@ python -m venv .venv
 pip install -r requirements.txt
 
 # 2. Download AIDER dataset from Kaggle
-# Visit: https://www.kaggle.com/datasets/chaitanya99/aider
+# Visit: https://www.kaggle.com/datasets/abdalrahmanalasil/aider2
 # Extract to: C:\path\to\AIDER
+
+# Optional: Download external fire dataset for evaluation
+# Visit: https://www.kaggle.com/datasets/abdalrahmanalasil/fire-non/data
 ```
 
 ---
@@ -35,9 +38,10 @@ python efficientnet\train.py --data_root "C:\path\to\AIDER" --batch_size 32 --ep
 python efficientnet\infer.py --data_root "C:\path\to\AIDER" --model_path models\best_model.pth
 ```
 
-### External Eval
+### External Eval (Fire vs Non-Fire Binary Classification)
 ```powershell
-python external_eval\eval_efficientnet_on_external.py --model_path models\best_model.pth --dataset_root "C:\path\to\fire_dataset"
+# Download dataset: https://www.kaggle.com/datasets/abdalrahmanalasil/fire-non/data
+python external_eval\eval_efficientnet_on_external.py --model_path .\Effiecinet_Net_weight\best_model.pth --dataset_root "C:\path\to\fire-non"
 ```
 
 ---
@@ -60,9 +64,10 @@ python florence\train.py --data_root "C:\path\to\AIDER" --hf_token YOUR_HF_TOKEN
 python florence\infer.py --repo_id "username/disaster-florence" --subfolder "florence2-best-f1-0.9690" --image_path "test.jpg" --hf_token YOUR_HF_TOKEN
 ```
 
-### External Eval
+### External Eval (Fire vs Non-Fire Binary Classification)
 ```powershell
-python external_eval\eval_florence_on_external.py --repo_id "username/disaster-florence" --subfolder "florence2-best-f1-0.9690" --dataset_root "C:\path\to\fire_dataset" --hf_token hf_YOUR_TOKEN
+# Download dataset: https://www.kaggle.com/datasets/abdalrahmanalasil/fire-non/data
+python external_eval\eval_florence_on_external.py --base_model microsoft/Florence-2-base-ft --repo_id .\Florence_inf --dataset_root "C:\path\to\fire-non"
 ```
 
 ---

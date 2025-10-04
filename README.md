@@ -2,7 +2,7 @@
 
 This project uses the **AIDER (AI for Disaster Response)** dataset.
 
-**📥 Download:** [AIDER Dataset on Kaggle](https://www.kaggle.com/datasets/chaitanya99/aider)
+**📥 Download:** [AIDER Dataset on Kaggle](https://www.kaggle.com/datasets/abdalrahmanalasil/aider2)
 > *Note: You'll need a Kaggle account. Download and extract the dataset to your local machine.*
 
 **Classes:** 5 disaster categories
@@ -14,7 +14,7 @@ This project uses the **AIDER (AI for Disaster Response)** dataset.
 
 **Dataset Structure:** The dataset is organized into train/valid/test splits with subdirectories for each class.
 
-**Alternative:** For external evaluation, we also tested on binary fire/no-fire datasets from Kaggle.: EfficientNetV2 & Florence-2
+**External Evaluation Dataset:** For binary fire/no-fire evaluation, we also use the [Fire vs Non-Fire Dataset](https://www.kaggle.com/datasets/abdalrahmanalasil/fire-non/data).: EfficientNetV2 & Florence-2
 
 This repository contains implementations of two approaches for disaster scene classification (collapsed_building, fire, flooded_areas, normal, traffic_incident):
 
@@ -98,9 +98,11 @@ pip install -r requirements.txt
 
 ### 2. Download Dataset
 
-Get the AIDER dataset from Kaggle: [Download here](https://www.kaggle.com/datasets/chaitanya99/aider)
+Get the AIDER dataset from Kaggle: [Download here](https://www.kaggle.com/datasets/abdalrahmanalasil/aider2)
 
 Extract it to a directory like `C:\Data\AIDER` (Windows) or `~/Data/AIDER` (Linux/Mac).
+
+**Optional:** For external evaluation, also download the [Fire vs Non-Fire Dataset](https://www.kaggle.com/datasets/abdalrahmanalasil/fire-non/data).
 
 ### 3. Use Pre-trained Models (Recommended)
 
@@ -205,19 +207,27 @@ python florence\train.py --data_root PATH_TO_DATA --hf_token YOUR_HF_TOKEN --bat
 
 ## 🧪 External Dataset Evaluation
 
-Both models can be evaluated on external datasets (e.g., fire/nofire binary classification):
+Both models can be evaluated on external datasets for binary fire/nofire classification.
 
-### Florence-2
+**Dataset:** [Fire vs Non-Fire on Kaggle](https://www.kaggle.com/datasets/abdalrahmanalasil/fire-non/data)
 
-```powershell
-python external_eval\eval_florence_on_external.py --repo_id YOUR_HF_REPO --dataset_root PATH_TO_EXTERNAL_DATA --hf_token YOUR_HF_TOKEN
-```
-
-### EfficientNet
+### EfficientNet External Evaluation
 
 ```powershell
-python external_eval\eval_efficientnet_on_external.py --model_path PATH_TO_MODEL --dataset_root PATH_TO_EXTERNAL_DATA
+# Using pre-trained weights
+python external_eval\eval_efficientnet_on_external.py --model_path .\Effiecinet_Net_weight\best_model.pth --dataset_root "C:\Data\fire-non"
 ```
+
+The script maps the 5-class predictions to binary (fire vs non-fire) and reports accuracy, precision, recall, and F1-score.
+
+### Florence-2 External Evaluation
+
+```powershell
+# Using pre-trained weights
+python external_eval\eval_florence_on_external.py --base_model microsoft/Florence-2-base-ft --repo_id .\Florence_inf --dataset_root "C:\Data\fire-non"
+```
+
+The script extracts class predictions from text completions and evaluates binary classification performance.
 
 ---
 

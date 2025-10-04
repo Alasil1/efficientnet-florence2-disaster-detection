@@ -23,6 +23,8 @@ This document maps the original notebooks to the organized Python files.
 
 ## 📓 `train-florence.ipynb` → `florence/`
 
+**Location:** `notebooks/train-florence.ipynb`
+
 | Notebook Section | Python File | Description |
 |-----------------|-------------|-------------|
 | Config class | `config.py` | Hyperparameters and settings |
@@ -41,6 +43,8 @@ This document maps the original notebooks to the organized Python files.
 ---
 
 ## 📓 `test-External_dataset.ipynb` → `external_eval/`
+
+**Location:** `notebooks/test-External_dataset.ipynb`
 
 | Notebook Section | Python File | Description |
 |-----------------|-------------|-------------|

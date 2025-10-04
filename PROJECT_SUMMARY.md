@@ -46,11 +46,12 @@ Final Code/
 │   ├── eval_efficientnet_on_external.py
 │   └── eval_florence_on_external.py
 │
-├── 📂 shared/                          # (Reserved for future shared utilities)
+├── 📂 notebooks/                       # Original Jupyter notebooks
+│   ├── efficency-net.ipynb            # Original notebook (reference)
+│   ├── train-florence.ipynb           # Original notebook (reference)
+│   └── test-External_dataset.ipynb    # Original notebook (reference)
 │
-├── 📓 efficency-net.ipynb              # Original notebook (reference)
-├── 📓 train-florence.ipynb             # Original notebook (reference)
-├── 📓 test-External_dataset.ipynb      # Original notebook (reference)
+├── 📂 shared/                          # (Reserved for future shared utilities)
 │
 ├── 📄 README.md                        # Main project documentation
 ├── 📄 NOTEBOOK_MAPPING.md              # Notebook→script mapping guide

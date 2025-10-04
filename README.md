@@ -1,4 +1,20 @@
-# Disaster Classification: EfficientNetV2 & Florence-2
+# Disaster ## 📊 Dataset
+
+This project uses the **AIDER (AI for Disaster Response)** dataset.
+
+**📥 Download:** [AIDER Dataset on Kaggle](https://www.kaggle.com/datasets/chaitanya99/aider)
+> *Note: You'll need a Kaggle account. Download and extract the dataset to your local machine.*
+
+**Classes:** 5 disaster categories
+- `collapsed_building` - Buildings damaged by earthquakes or explosions
+- `fire` - Fire incidents and wildfires  
+- `flooded_areas` - Flood scenes
+- `normal` - Non-disaster scenes
+- `traffic_incident` - Traffic accidents and roadblocks
+
+**Dataset Structure:** The dataset is organized into train/valid/test splits with subdirectories for each class.
+
+**Alternative:** For external evaluation, we also tested on binary fire/no-fire datasets from Kaggle.: EfficientNetV2 & Florence-2
 
 This repository contains implementations of two approaches for disaster scene classification (collapsed_building, fire, flooded_areas, normal, traffic_incident):
 
@@ -9,7 +25,24 @@ This repository contains implementations of two approaches for disaster scene cl
 
 ---
 
-## 📁 Project Structure
+## � Dataset
+
+This project uses the **AIDER (AI for Disaster Response)** dataset.
+
+**📥 Download:** [AIDER Dataset on Kaggle](https://www.kaggle.com/datasets/your-dataset-link-here)
+
+**Classes:** 5 disaster categories
+- `collapsed_building` - Buildings damaged by earthquakes or explosions
+- `fire` - Fire incidents and wildfires  
+- `flooded_areas` - Flood scenes
+- `normal` - Non-disaster scenes
+- `traffic_incident` - Traffic accidents and roadblocks
+
+**Dataset Structure:** The dataset is organized into train/valid/test splits with subdirectories for each class.
+
+---
+
+## �📁 Project Structure
 
 ```
 ├── efficientnet/          # EfficientNetV2 approach
@@ -51,20 +84,30 @@ This repository contains implementations of two approaches for disaster scene cl
 
 ## 🚀 Quick Start
 
-### 1. Install Dependencies
+> **💡 TL;DR:** Clone repo → Install dependencies → Download dataset → Run inference with pre-trained weights!
+
+### 1. Clone and Setup Environment
 
 ```powershell
+git clone https://github.com/Alasil1/efficientnet-florence2-disaster-detection.git
+cd efficientnet-florence2-disaster-detection
 python -m venv .venv
 .\.venv\Scripts\Activate
 pip install -r requirements.txt
 ```
 
-### 2. Use Pre-trained Models (Recommended)
+### 2. Download Dataset
+
+Get the AIDER dataset from Kaggle: [Download here](https://www.kaggle.com/datasets/chaitanya99/aider)
+
+Extract it to a directory like `C:\Data\AIDER` (Windows) or `~/Data/AIDER` (Linux/Mac).
+
+### 3. Use Pre-trained Models (Recommended)
 
 **EfficientNetV2 Inference:**
 ```powershell
 # Uses Effiecinet_Net_weight/best_model.pth by default
-python efficientnet\infer.py --data_root PATH_TO_TEST_DATA
+python efficientnet\infer.py --data_root "C:\Data\AIDER\test"
 ```
 
 **Florence-2 Inference:**
@@ -73,20 +116,17 @@ python efficientnet\infer.py --data_root PATH_TO_TEST_DATA
 python florence\infer.py --image_path test_image.jpg
 ```
 
-### 3. Prepare Dataset (for training or evaluation)
+### 4. Train from Scratch (Optional)
 
-Your dataset should have this structure:
+If you want to train your own models instead of using the pre-trained weights:
 
+```powershell
+# EfficientNet
+python efficientnet\train.py --data_root "C:\Data\AIDER" --epochs 50 --batch_size 32
+
+# Florence-2 (requires HuggingFace token)
+python florence\train.py --data_root "C:\Data\AIDER" --epochs 10 --hf_token YOUR_HF_TOKEN
 ```
-DATA_ROOT/
-  collapsed_building/
-  fire/
-  flooded_areas/
-  normal/
-  traffic_incident/
-```
-
-Each class directory contains the images for that class.
 
 ---
 

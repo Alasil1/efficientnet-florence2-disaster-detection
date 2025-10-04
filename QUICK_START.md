@@ -3,12 +3,16 @@
 ## 🚀 Setup
 
 ```powershell
-# Clone repo and setup
-git clone YOUR_REPO_URL
-cd "Final Code"
+# 1. Clone repo and setup environment
+git clone https://github.com/Alasil1/efficientnet-florence2-disaster-detection.git
+cd efficientnet-florence2-disaster-detection
 python -m venv .venv
 .\.venv\Scripts\Activate
 pip install -r requirements.txt
+
+# 2. Download AIDER dataset from Kaggle
+# Visit: https://www.kaggle.com/datasets/chaitanya99/aider
+# Extract to: C:\path\to\AIDER
 ```
 
 ---
@@ -18,7 +22,7 @@ pip install -r requirements.txt
 ### 🎯 Quick Inference (Pre-trained Weights)
 ```powershell
 # Uses Effiecinet_Net_weight/best_model.pth by default
-python efficientnet\infer.py --data_root "C:\path\to\test_data"
+python efficientnet\infer.py --data_root "C:\path\to\AIDER\test"
 ```
 
 ### Train

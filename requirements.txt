@@ -1,0 +1,25 @@
+# Core dependencies
+torch>=1.12.0
+torchvision>=0.13.0
+numpy
+Pillow
+tqdm
+
+# Data augmentation
+albumentations>=1.3.0
+
+# Metrics and visualization
+scikit-learn
+matplotlib
+seaborn
+
+# Model analysis (optional for EfficientNet)
+thop
+
+# Florence-2 specific
+transformers>=4.30.0
+peft>=0.4.0
+huggingface-hub
+
+# Optional: for dataset preparation
+pandas

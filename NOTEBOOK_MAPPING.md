@@ -4,6 +4,8 @@ This document maps the original notebooks to the organized Python files.
 
 ## 📓 `efficency-net.ipynb` → `efficientnet/`
 
+**Location:** `notebooks/efficency-net.ipynb`
+
 | Notebook Section | Python File | Description |
 |-----------------|-------------|-------------|
 | DATA cells | `dataset.py` | EfficientNetV2Dataset class |

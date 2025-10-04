@@ -30,9 +30,11 @@ This repository contains implementations of two approaches for disaster scene cl
 │   ├── eval_efficientnet_on_external.py
 │   └── eval_florence_on_external.py
 │
-├── efficency-net.ipynb    # Original EfficientNet notebook
-├── train-florence.ipynb   # Original Florence notebook
-├── test-External_dataset.ipynb  # External test notebook
+├── notebooks/             # Original Jupyter notebooks (reference)
+│   ├── efficency-net.ipynb
+│   ├── train-florence.ipynb
+│   └── test-External_dataset.ipynb
+│
 ├── requirements.txt       # Python dependencies
 └── README.md              # This file
 ```
